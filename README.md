@@ -1,4 +1,5 @@
 # RCO SE Logic HUD
+![License](https://img.shields.io/badge/license-MIT-green)
 
 **Raw Cast Orbital — Engineering Tools Division**
 
