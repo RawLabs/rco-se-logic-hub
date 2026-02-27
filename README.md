@@ -27,6 +27,13 @@ Given a `bp.sbc` file, this tool:
 
 ---
 
+Quick Start (Linux):
+1) Put bp.sbc + se_logic_hud_v1_05.py in a folder
+2) Run: python3 se_logic_hud_v1_05.py bp.sbc
+3) Open the generated SE_Logic_HUD_*.md
+
+---
+
 ## Why This Exists
 
 Space Engineers automation grows fast.
