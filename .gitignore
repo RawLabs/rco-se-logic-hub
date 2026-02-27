@@ -1,0 +1,17 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Build artifacts
+dist/
+build/
+*.spec
+
+# Generated reports
+SE_Logic_HUD_*.md
+SE_Logic_HUD_*.log.txt
+SE_Logic_HUD_*.debug.csv
+
+# OS noise
+.DS_Store
+Thumbs.db
