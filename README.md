@@ -3,152 +3,188 @@
 
 **Raw Cast Orbital — Engineering Tools Division**
 
-SE Logic HUD generates a clean, human-readable snapshot of a Space Engineers blueprint’s automation logic.
+A lightweight blueprint logic viewer for Space Engineers.
 
-No flow diagrams.  
-No entity ID noise.  
-Just: Block → Action → Target.
+See all Timer and Event automation in one organized report.
 
----
+Just:
 
-## What It Does
+Block → Action → Target
 
-Given a `bp.sbc` file, this tool:
+Signal over greeble.
 
-- Extracts all Timer Blocks  
-- Extracts all Event Controllers  
-- Parses toolbar actions  
-- Resolves block targets by name (not Entity ID)  
-- Flags missing targets  
-- Splits missing targets into:  
-  - Likely Detached AQR Module  
-  - Likely Broken Links  
-- Outputs a versioned Markdown report  
-- Writes a detailed run log  
+## What This Is
 
----
+RCO SE Logic HUD is a standalone tool that reads a Space Engineers blueprint file (bp.sbc) and generates a clean, human-readable automation snapshot.
 
-Quick Start (Linux):
-1) Put bp.sbc + se_logic_hud_v1_05.py in a folder
-2) Run: python3 se_logic_hud_v1_05.py bp.sbc
-3) Open the generated SE_Logic_HUD_*.md
+It is not a diagram generator.
+It does not rewrite your logic.
+It does not modify your blueprint.
 
----
+It simply shows you what your automation is doing.
+
+In one scrollable document.
+
+What It Does
+
+Given a bp.sbc file, the tool:
+
+Extracts all Timer Blocks
+
+Extracts all Event Controllers
+
+Parses toolbar actions
+
+Resolves targets by block name (not Entity ID)
+
+Flags missing targets
+
+Splits missing targets into:
+
+Likely Detached AQR Module
+
+Likely Broken Links
+
+Generates a versioned Markdown report
+
+Writes a detailed run log
+
+Everything visible. Nothing hidden.
 
 ## Why This Exists
 
-Space Engineers automation grows fast.
+Space Engineers automation scales quickly.
 
 Maintaining logic requires constant UI bouncing:
 
-- Terminal → Search → Toolbar  
-- Event Controller → Block → Search  
-- AI Recorder → Waypoints → Actions  
+Terminal → Search → Toolbar
+Event Controller → Block → Search
+AI Recorder → Waypoints → Actions
+
+After a while, it becomes friction.
 
 This tool eliminates that friction.
 
-You get a full automation snapshot in one scrollable document.
+You get a full automation snapshot in one document.
 
----
+It exists to restore clarity.
 
-# Step 1 — Export Your Blueprint
+(And possibly to give its author meaning in life.)
 
-Inside Space Engineers:
+## Download
 
-1. Open the Blueprint Menu (`F10`)  
-2. Select your blueprint  
-3. Click **Open Blueprint Folder**  
-4. Locate the blueprint directory  
-5. Copy the file named:bp.sbc
+# Windows Users (Recommended for Most Players)
 
-This is the file the tool reads.
+Go to the Releases section of this repository.
 
----
+Download the latest:
 
-# Recommended Folder Structure
+RCO_SE_Logic_HUD.exe
 
-Create a working folder named after your blueprint:
-PowerBattleCruiser/
-├─ bp.sbc
-├─ se_logic_hud_v1_05.py (Linux / Python users)
-└─ RCO_SE_Logic_HUD.exe (Windows users)
+No installation required.
+
+# Finding Your Blueprint (Windows – Steam)
+
+Space Engineers stores blueprint files here:
+
+Local Blueprints
+%AppData%\SpaceEngineers\Blueprints\local
+
+Workshop Blueprints
+%AppData%\SpaceEngineers\Blueprints\workshop
+
+Quick Method
+
+Press Win + R
+
+Paste:Quick Method
+
+Press Win + R
+
+Paste: %AppData%\SpaceEngineers\Blueprints\local
+
+Press Enter
+
+Open your blueprint folder
+
+Drag bp.sbc onto RCO_SE_Logic_HUD.exe
+
+That’s it.
+
+The report will generate in the same folder where the EXE is located
+(usually your Downloads folder).
+
+No file copying required.
 
 
-Keep reports inside this folder.
+## Executing (Linux / Python)
 
-This keeps logic reports versioned and clean.
+Download:
 
----
+se_logic_hud_v1_05.py
 
-# Linux / Python Users
+Requires:
 
-## Requirements
+Python 3.8+
 
-- Python 3.8+
+From the directory containing bp.sbc after liberating from Windows run: python3 se_logic_hud_v1_05.py bp.sbc
+Or from anywhere: python3 /path/to/se_logic_hud_v1_05.py /path/to/bp.sbc
 
-Check version: python3 --version
+The report will be generated beside the script.
 
+No GUI.
+No installer.
+No registry.
+Just execution.
 
-## Run
+## What to Expect
 
-From inside your blueprint folder:python3 se_logic_hud_v1_05.py bp.sbc
+After running the tool, you will see:
+SE_Logic_HUD_<BlueprintName>_<YYYYMMDD-HHMM>.md
+SE_Logic_HUD_<BlueprintName>_<YYYYMMDD-HHMM>.log.txt
 
-## Output
+## Output Contents
 
-The tool will generate:
-SE_Logic_HUD_<BlueprintName><YYYYMMDD-HHMM>.md
-SE_Logic_HUD<BlueprintName>_<YYYYMMDD-HHMM>.log.txt
-
----
-
-# Windows Users (EXE Version)
-
-Download the latest release from the GitHub Releases page.
-
-## Drag & Drop Method (Recommended)
-
-1. Place `RCO_SE_Logic_HUD.exe` inside your blueprint folder.  
-2. Drag `bp.sbc` onto the EXE.  
-3. The tool runs automatically.  
-4. Output files appear in the same folder.  
-
-No Python installation required.
-
----
-
-# Output Contents
 
 The generated HUD includes:
 
-- Timer Blocks (A→Z)  
-- Event Controllers (A→Z)  
-- Repair List (Missing Targets)  
-- Slot-by-slot action mapping  
-- Parameter values (angles, speeds, etc.)  
-- Detached vs Broken classification  
+Timer Blocks (A→Z)
+
+Event Controllers (A→Z)
+
+Repair List (Missing Targets)
+
+Slot-by-slot action mapping
+
+Parameter values (angles, speeds, speeds, overrides, etc.)
+
+Detached vs Broken classification
 
 Everything visible in one document.
 
----
 
-# Logging
+## Logging
 
 Each run creates a timestamped log file.
 
 The log records:
 
-- Load status  
-- XML parse result  
-- Block indexing count  
-- Timer and Event counts  
-- Missing target summary  
-- Success / Failure state  
+Load status
+
+XML parse result
+
+Block indexing count
+
+Timer and Event counts
+
+Missing target summary
+
+Success / Failure state
 
 This ensures transparency and traceability.
 
----
 
-# Versioning
+## Versioning
 
 Output filenames include:
 
@@ -156,24 +192,28 @@ Blueprint Title + Date + Time
 
 This prevents accidental overwrite and supports revision tracking.
 
----
 
-# Philosophy
+## Philosophy
+
 
 Raw Cast Orbital tools follow:
 
-- KISS principles  
-- No hidden behavior  
-- No external dependencies  
-- Clear output  
-- Transparent logic  
-- Signal over greeble  
+KISS principles
 
----
+No hidden behavior
 
-**Powered by Raw Cast Labs**  
+No external dependencies
+
+Clear output
+
+Transparent logic
+
+Signal over greeble
+
+Clarity is the product.
+
+Powered by Raw Cast Labs
 A division of Raw Cast Orbital (RCO)
 
 Engineering over noise.
-
 
