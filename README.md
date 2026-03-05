@@ -1,6 +1,6 @@
 # RCO SE Logic HUD
 ![License](https://img.shields.io/badge/license-MIT-green)
-
+RCO SE Logic HUD — Space Engineers Blueprint Automation Analyzer
 **Raw Cast Orbital — Engineering Tools Division**
 
 A lightweight blueprint logic viewer for Space Engineers.
